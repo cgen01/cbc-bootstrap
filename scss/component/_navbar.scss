@@ -1,0 +1,186 @@
+/**
+ * Navbar styling.
+ */
+
+$mobile: "screen and (max-width: #{$screen-xs-max})";
+$tablet: "screen and (min-width: #{$screen-sm-min})";
+$normal: "screen and (min-width: #{$screen-md-min})";
+$wide: "screen and (min-width: #{$screen-lg-min})";
+$grid-breakpoint: "screen and (min-width: #{$grid-float-breakpoint})";
+
+body {
+  // Fix horizontal scrolling on iOS devices.
+  // https://www.drupal.org/node/1870076
+  position: relative;
+  &.navbar-is-static-top {
+    margin-top: 0;
+  }
+  &.navbar-is-fixed-top {
+    margin-top: ($navbar-height + ($grid-gutter-width / 2));
+  }
+  &.navbar-is-fixed-bottom {
+    padding-bottom: ($navbar-height + ($grid-gutter-width / 2));
+  }
+  @media #{$tablet} {
+    margin-top: ($grid-gutter-width / 2);
+  }
+  @media #{$mobile} {
+    &.toolbar-vertical {
+      &.navbar-is-fixed-top,
+      &.navbar-is-fixed-bottom {
+        .toolbar-bar {
+          position: fixed;
+        }
+        header {
+          z-index: 500;
+        }
+      } // Default toolbar fixed height value.
+      // @see core/modules/toolbar/css/toolbar.icons.theme.css@261
+      &.navbar-is-fixed-top header {
+        top: 39px;
+      }
+    }
+  }
+}
+
+.navbar.container {
+  @media #{$tablet} {
+    max-width: (($container-sm - $grid-gutter-width));
+  }
+  @media #{$normal} {
+    max-width: (($container-md - $grid-gutter-width));
+  }
+  @media #{$wide} {
+    max-width: (($container-lg - $grid-gutter-width));
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+  box-shadow: 0 -3px 15px #333
+}
+
+.navbar-brand {
+  padding-top: 23px;
+}
+
+// Branding.
+.navbar .logo {
+  margin-right: -($grid-gutter-width / 2);
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+  @media #{$grid-breakpoint} {
+    margin-right: 0;
+    padding-left: 0;
+  }
+  >img {
+    max-width: 40px;
+    width: 100%;
+  }
+}
+
+.navbar-default {
+  @include gradient(-45, #4391ab, $cbc-blue);
+  .navbar-nav {
+    >.open,
+    >.active {
+      >a {
+        &,
+        &:hover,
+        &:focus {
+          @media #{$mobile} {
+            @include gradient(-45, $cbc-red, #e84070);
+          }
+          @media #{$tablet} {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    >li>a {
+      @media #{$mobile} {
+        padding: 15px;
+        &:focus {
+          @include gradient(-45, $cbc-red, #e84070);
+        }
+      }
+      @media #{$tablet} {
+        padding-top: 22px;
+        padding-bottom: 16px;
+        margin: 0 2px;
+        &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 2px;
+          transition: width .3s ease;
+          margin-top: 6px;
+          @include gradient(-45, $cbc-red, #f3668e);
+        }
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+    ul.dropdown-menu {
+      border: 0;
+      margin-top: 1px;
+      >li {
+        >a {
+          @media #{$mobile} {
+            padding: 10px 15px 10px 25px;
+          }
+          @media #{$tablet} {
+            padding: 10px 20px;
+            position: relative;
+            &::before {
+              content: '';
+              display: block;
+              width: 2px;
+              height: 0;
+              transition: height .3s ease;
+              position: absolute;
+              top: 0;
+              left: 0;
+              @include gradient(-45, $cbc-red, #f3668e);
+            }
+            &:hover::before {
+              height: 100%;
+            }
+          }
+        }
+        &.active>a::before {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.navbar-toggle {
+  border: 0;
+  &:hover,
+  &:focus {
+    @include gradient(-45, $cbc-red, #f3668e);
+  }
+}
+
+@media screen and (max-width: 1026px) and (min-width: #{$screen-xs-max}) {
+  .navbar-brand.name {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 805px) and (min-width: #{$screen-xs-max}) {
+  .navbar .logo {
+    display: none;
+  }
+}
+
+@media #{$mobile} {
+  nav#block-cbc-bootstrap-main-menu {
+    padding-top: 45px;
+  }
+}

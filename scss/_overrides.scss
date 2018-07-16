@@ -1,0 +1,180 @@
+// @todo these should be their own CSS files and only included when
+// specific Drupal libraries are used.
+@import "component/alert";
+@import "component/ajax";
+@import "component/field";
+@import "component/file";
+@import "component/filter";
+@import "component/form";
+@import "component/icon";
+@import "component/navbar";
+@import "component/node";
+@import "component/panel";
+@import "component/progress-bar";
+@import "component/table-drag";
+@import "component/tabs";
+@import "component/toolbar";
+// jQuery UI style overrides.
+@import "jquery-ui/autocomplete";
+ol,
+ul {
+  padding-left: 1.5em;
+  .popover &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Page header.
+.page-header {
+  padding: 10px;
+  font-size: 45px;
+  font-weight: 300;
+  border-bottom: 0;
+  position: relative;
+  letter-spacing: 3px;
+  margin: 40px 0 40px -15px;
+
+  &::before {
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    left: -5px;
+    content: '';
+    position: absolute;
+    @include gradient(-45, $cbc-red, #f3668e);
+  }
+}
+
+// Footer.
+footer.footer {
+  border-top: 0;
+  margin-top: 45px;
+  padding-top: 35px;
+  padding-bottom: 36px;
+  background-color: #f3f3f3
+}
+
+// Paragraphs.
+p {
+  line-height: 25px;
+  margin-bottom: 25px;
+}
+
+p:last-child,
+.form-group:last-child,
+.panel:last-child {
+  margin-bottom: 0;
+}
+
+// Help region.
+.region-help {
+  >.glyphicon {
+    font-size: $font-size-large;
+    float: left;
+    margin: -0.05em 0.5em 0 0;
+  }
+  .block {
+    overflow: hidden;
+  }
+}
+
+.help-block,
+.control-group .help-inline {
+  color: $gray-light;
+  font-size: 12px;
+  margin: 5px 0 10px;
+  padding: 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+//== Tyler's Changes
+//
+//##
+.block-copyright-block {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 13px;
+  p {
+    margin: 0;
+  }
+}
+
+.cbc--service-times {
+  margin-top: 50px;
+  img {
+    max-width: 60px;
+    float: left;
+    margin-top: 9px;
+    @media screen and (max-width: 718px) {
+      float: none;
+      display: block;
+      margin: 0 auto 25px;
+    }
+  }
+  .service-list {
+    margin-left: 75px;
+    @media screen and (max-width: 718px) {
+      margin-left: 0;
+    }
+    p {
+      margin-bottom: 5px
+    }
+    span {
+      color: $cbc-red;
+    }
+  }
+}
+
+.cbc--social-links li {
+  padding: 0 15px;
+  a:hover {
+    color: $cbc-red;
+  }
+}
+
+section#block-cbc-bootstrap-frontpage {
+  margin: -9px -15px 30px -15px;
+  .slider-1-text {
+    text-shadow: 0px 5px 20px #333;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 72px;
+    font-family: $font-family-sans-serif;
+    color: #ffffff !important;
+    text-align: center;
+    font-size: 5em;
+  }
+}
+
+div#backtotop {
+  @include gradient(-45, #4391ab, $cbc-blue);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  transition: opacity .3s ease;
+  &:after {
+    color: #e84070;
+    content: '\f2fc';
+    font-family: 'Material-Design-Iconic-Font';
+    top: 4px;
+    left: 17px;
+    position: absolute;
+    text-indent: 0;
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+div.view-frontpage h2 {
+  display: none;
+}
+
+.cbc--block {
+  padding: 50px 0;
+}
