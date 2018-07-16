@@ -80,7 +80,7 @@ body {
 }
 
 .navbar-default {
-  @include gradient(-45, #4391ab, $cbc-blue);
+  @include gradient(-45, #3699ed, $cbc-blue);
   .navbar-nav {
     >.open,
     >.active {
